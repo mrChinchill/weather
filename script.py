@@ -34,6 +34,7 @@ def main():
     for city in cities:
         try:
             result = get_weather(city['name'], lang=city['lang'], unit=city['unit'])
+            print(result)
 
         except (ConnectionError, HTTPError):
             if city['lang'] == 'ru':
@@ -41,9 +42,6 @@ def main():
             else:
                 error_message = 'Couldn\'t get weather info for "{}"'
             print(error_message.format(city['name']))
-
-        else:
-            print(result)
 
 
 if __name__ == '__main__':
